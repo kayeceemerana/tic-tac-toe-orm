@@ -3,11 +3,12 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "oxlint",
-    "preview": "vite preview"
+ "scripts": {
+  "dev": "vite",
+  "server": "node server/index.js",
+  "build": "vite build",
+  "lint": "oxlint",
+  "preview": "vite preview"
   },
   "dependencies": {
     "cors": "^2.8.6",
