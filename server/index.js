@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import { sequelize, Game } from "./db.js";
 
-const app = express();
+const app = express();          // app is created here FIRST
 app.use(cors());
 app.use(express.json());
 
@@ -19,7 +19,13 @@ app.post("/api/games", async (req, res) => {
   res.status(201).json(game);
 });
 
-// DELETE a game
+// DELETE all games
+app.delete("/api/games", async (req, res) => {
+  await Game.destroy({ where: {}, truncate: true });
+  res.sendStatus(204);
+});
+
+// DELETE one game
 app.delete("/api/games/:id", async (req, res) => {
   await Game.destroy({ where: { id: req.params.id } });
   res.sendStatus(204);

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { saveGame } from "./api";
+import { saveGame, clearGames } from "./api";
 import GameHistory from "./GameHistory";
 import "./App.css";
 
@@ -46,6 +46,10 @@ export default function App() {
     setXTurn(true);
     setResult(null);
   }
+  async function clearHistory() {
+  await clearGames();
+  setRefreshKey((k) => k + 1);
+}
 
   let statusText = `Next player: ${xTurn ? "X" : "O"}`;
   let statusClass = "status";
@@ -78,8 +82,12 @@ export default function App() {
           ))}
         </div>
 
-        <button className="btn-new" onClick={reset}>
+                <button className="btn-new" onClick={reset}>
           New Game
+        </button>
+
+        <button className="btn-clear" onClick={clearHistory}>
+          Clear History
         </button>
       </div>
 

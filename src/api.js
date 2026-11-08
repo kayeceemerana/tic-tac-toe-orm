@@ -10,3 +10,4 @@ export const saveGame = (winner, board) =>
   }).then((r) => r.json());
 
 export const deleteGame = (id) => fetch(`${API}/${id}`, { method: "DELETE" });
+export const clearGames = () => fetch(API, { method: "DELETE" });
